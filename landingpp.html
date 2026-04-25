@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesanan Diterima – SRI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="SRI">
+            <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" width="48px" alt="SRI Logo">
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul id="nav-menu">
+            <li><a href="indexpp.html">Home</a></li>
+            <li><a href="indexpp.html#tentang">Tentang</a></li>
+            <li><a href="indexpp.html#paket">Paket</a></li>
+            <li><a href="formpp.html" class="active">Pesan Sekarang</a></li>
+        </ul>
+    </nav>
+
+    <section class="landing-hero">
+        <div class="landing-hero-content">
+            <h1>Terima kasih sudah mempercayai <span class="teks-hijau">SRI</span>!</h1>
+            <p class="slogan">Pesanan Smart Rack IoT Anda telah kami terima.</p>
+            <p class="keterangan">Tim kami akan menghubungi Anda dalam 1×24 jam untuk konfirmasi pembayaran dan jadwal pengiriman.</p>
+            <form action="indexpp.html">
+                <button type="submit" class="btn-home">Kembali ke Home</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="vft-footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3><span>SRI</span></h3>
+                <p>Smart Rack IoT — solusi pertanian vertikal hidroponik untuk ekosistem perkotaan.</p>
+            </div>
+            <div class="footer-section contact">
+                <h4>Kontak</h4>
+                <p>Email: info@vft-farming.com</p>
+                <p>Phone: +62 812 3456 789</p>
+                <p>Lokasi: Jakarta, Indonesia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 SRI – Smart Rack IoT. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById("hamburger");
+        const menu = document.getElementById("nav-menu");
+        btn.addEventListener("click", () => {
+            btn.classList.toggle("open");
+            menu.classList.toggle("open");
+        });
+    </script>
+</body>
+</html>
