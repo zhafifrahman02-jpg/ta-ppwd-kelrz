@@ -224,11 +224,17 @@ body {
 
 .hero {
     height: 100vh;
-    background: url('../img/verticalfarm.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+}
+
+.hero, 
+.carousel, 
+.carousel-inner, 
+.carousel-item {
+    height: 100vh;
 }
 .hero::after {
     content: '';
@@ -237,14 +243,20 @@ body {
     background: rgba(0,0,0,0.48);
 }
 .hero-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 0 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; 
+    text-align: center; 
+    width: 80%; 
+
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
+    text-align: center; 
 }
+
 .hero-content h1 {
     font-size: clamp(2rem, 6vw, 4.5rem);
     font-weight: 900;
@@ -433,4 +445,22 @@ body {
     .paket-table { min-width: 600px; }
     .hero-content h1 { font-size: 2rem; }
     .process-card { padding: 24px 16px; }
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e") !important;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 99 !important;
+}
+
+.hero-content {
+    z-index: 10;
+    position: absolute;
 }
