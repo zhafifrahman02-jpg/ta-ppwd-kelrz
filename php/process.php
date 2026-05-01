@@ -14,19 +14,19 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="../indexpp.html">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="indexpp.html">
                 <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" width="40" alt="SRI Logo">
-                SRI
+                RuangTanam
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                    <li class="nav-item"><a class="nav-link" href="../indexpp.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../indexpp.html#tentang">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../indexpp.html#paket">Paket</a></li>
-                    <li class="nav-item"><a class="nav-link active-page" href="../formpp.html">Pesan Sekarang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="indexpp.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#paket">Paket</a></li>
+                    <li class="nav-item"><a class="nav-link active-page" href="formpp.html">Pesan Sekarang</a></li>
                 </ul>
             </div>
         </div>
