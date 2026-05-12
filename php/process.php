@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="indexpp.html">
+            <a class="navbar-brand d-flex align-items-center gap-2">
                 <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" width="40" alt="SRI Logo">
                 RuangTanam
             </a>
@@ -23,10 +23,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                    <li class="nav-item"><a class="nav-link" href="indexpp.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#paket">Paket</a></li>
-                    <li class="nav-item"><a class="nav-link active-page" href="formpp.html">Pesan Sekarang</a></li>
                 </ul>
             </div>
         </div>
@@ -211,29 +207,7 @@ $sapaan = ($jenis_kelamin === "Laki-laki") ? "Bapak" : "Ibu";
                             <?= $promo ? 'Anda akan menerima tips berkebun dan info produk terbaru dari SRI.' : 'Anda tidak berlangganan info produk.' ?>
                         </p>
 
-                        <p class="section-label">Langkah Selanjutnya</p>
-                        <?php
-                        $langkah = [
-                            ["Cek Email Konfirmasi",  "Detail pesanan dikirim ke " . $email],
-                            ["Lakukan Pembayaran",    "Transfer ke rekening SRI dalam 1x24 jam"],
-                            ["Konfirmasi Pembayaran", "Kirim bukti transfer via WhatsApp ke +62 812 3456 789"],
-                            ["Pengiriman Unit",       "Hardware dikirim dalam 3–5 hari kerja"],
-                            ["Mulai Bertani",         "Ikuti panduan digital dan panen pertama dalam 30 hari"],
-                        ];
-                        ?>
-                        <ul class="step-list">
-                            <?php
-                            for ($i = 0; $i < count($langkah); $i++) {
-                                echo '<li>
-                                        <div class="step-num">' . ($i + 1) . '</div>
-                                        <div class="step-text">
-                                            <strong>' . $langkah[$i][0] . '</strong>
-                                            <span>' . $langkah[$i][1] . '</span>
-                                        </div>
-                                      </li>';
-                            }
-                            ?>
-                        </ul>
+
 
                         <a href="../indexpp.html" class="btn btn-hijau w-100 mt-4 py-2">Kembali ke Halaman Utama</a>
 
