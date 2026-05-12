@@ -44,8 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $nama              = htmlspecialchars(trim($_POST['nama'] ?? ''));
 $email             = htmlspecialchars(trim($_POST['email'] ?? ''));
 $telepon           = htmlspecialchars(trim($_POST['telepon'] ?? ''));
-$umur              = (int)($_POST['umur'] ?? 0);
-$jenis_kelamin     = htmlspecialchars($_POST['jenis_kelamin'] ?? '');
 $alamat            = htmlspecialchars(trim($_POST['alamat'] ?? ''));
 $kategori_pengguna = htmlspecialchars($_POST['kategori_pengguna'] ?? '');
 $paket             = htmlspecialchars($_POST['paket'] ?? '');
@@ -58,8 +56,6 @@ if (empty($nama))                               $errors[] = "Nama lengkap wajib 
 if (empty($email))                              $errors[] = "Email wajib diisi.";
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Format email tidak valid.";
 if (empty($telepon))                            $errors[] = "Nomor telepon wajib diisi.";
-if ($umur < 10 || $umur > 99)                   $errors[] = "Umur harus antara 10–99 tahun.";
-if (empty($jenis_kelamin))                      $errors[] = "Jenis kelamin wajib dipilih.";
 if (empty($alamat))                             $errors[] = "Alamat pengiriman wajib diisi.";
 if (empty($kategori_pengguna))                  $errors[] = "Kategori pengguna wajib dipilih.";
 if (empty($paket))                              $errors[] = "Paket wajib dipilih.";
@@ -125,23 +121,13 @@ $kode = "SRI-" . strtoupper(substr(str_replace(' ', '', $nama), 0, 3))
       . "-" . date('dmY')
       . "-" . str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT);
 
-if ($umur < 18) {
-    $kategori_umur = "Pelajar";
-} elseif ($umur < 30) {
-    $kategori_umur = "Dewasa Muda";
-} elseif ($umur < 50) {
-    $kategori_umur = "Dewasa";
-} else {
-    $kategori_umur = "Senior";
-}
 
-$sapaan = ($jenis_kelamin === "Laki-laki") ? "Bapak" : "Ibu";
 ?>
 
                         <div style="margin-bottom:20px;">
                             <h2 style="font-size:22px; font-weight:800; margin-bottom:4px;">Pesanan Berhasil Diterima</h2>
                             <p style="color:#666; font-size:13px;">
-                                Terima kasih, <?= $sapaan . ' ' . $nama ?>.<br>
+                                Terima kasih, <?= $nama ?>.<br>
                                 Kode Pesanan: <span class="kode-pesanan"><?= $kode ?></span>
                             </p>
                         </div>
@@ -153,8 +139,6 @@ $sapaan = ($jenis_kelamin === "Laki-laki") ? "Bapak" : "Ibu";
                                 "Nama Lengkap"       => $nama,
                                 "Email"              => $email,
                                 "WhatsApp / Telepon" => $telepon,
-                                "Umur"               => $umur . " tahun (" . $kategori_umur . ")",
-                                "Jenis Kelamin"      => $jenis_kelamin,
                                 "Kategori Pengguna"  => $kategori_pengguna,
                                 "Alamat Pengiriman"  => $alamat,
                             ];
@@ -204,9 +188,12 @@ $sapaan = ($jenis_kelamin === "Laki-laki") ? "Bapak" : "Ibu";
                         <?php endif; ?>
 
                         <p style="font-size:13px; color:#888; margin-top:14px;">
-                            <?= $promo ? 'Anda akan menerima tips berkebun dan info produk terbaru dari SRI.' : 'Anda tidak berlangganan info produk.' ?>
+                            <?= $promo ? 'Anda akan menerima tips berkebun dan info produk terbaru dari RuangTanam' : 'Anda tidak berlangganan info produk.' ?>
                         </p>
-
+                        
+                        <p style="font-size:13px; color:#888; margin-top:14px;">
+                            Kami akan segera menghubungi anda tentang kemajuan pesanan
+                        </p>
 
 
                         <a href="../indexpp.html" class="btn btn-hijau w-100 mt-4 py-2">Kembali ke Halaman Utama</a>
@@ -221,18 +208,18 @@ $sapaan = ($jenis_kelamin === "Laki-laki") ? "Bapak" : "Ibu";
         <div class="container">
             <div class="row g-4">
                 <div class="col-12 col-md-5">
-                    <h3>SRI</h3>
-                    <p>Smart Rack IoT — solusi pertanian vertikal hidroponik untuk ekosistem perkotaan.</p>
+                    <h3>RuangTanam</h3>
+                    <p>RuangTanam — solusi pertanian vertikal hidroponik untuk ekosistem perkotaan.</p>
                 </div>
                 <div class="col-12 col-md-4">
                     <h5>Kontak</h5>
-                    <p>Email: info@sri-farming.com<br>
+                    <p>Email: RuangTanam@farming.com<br>
                     Phone: +62 812 3456 789<br>
                     Lokasi: Jakarta, Indonesia</p>
                 </div>
             </div>
             <hr class="my-3">
-            <p class="text-center footer-bottom mb-0">&copy; 2026 SRI – Smart Rack IoT. All rights reserved.</p>
+            <p class="text-center footer-bottom mb-0">&copy; 2026 RuangTanam. All rights reserved.</p>
         </div>
     </footer>
 
