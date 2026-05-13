@@ -9,18 +9,27 @@ if (isset($_SESSION['admin'])) {
 $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-require __DIR__ . '/koneksi.php';
+    require __DIR__ . '/koneksi.php';
 
     $username = trim($_POST['username']);
-    $password = MD5(trim($_POST['password']));
+    $password = trim($_POST['password']);
 
-    $query = mysqli_query($koneksi, "SELECT * FROM admin WHERE username='$username' AND password='$password'");
+    // Prepared Statement — aman dari SQL Injection
+    $stmt = mysqli_prepare($koneksi, "SELECT * FROM admin WHERE username = ?");
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-    if (mysqli_num_rows($query) === 1) {
-        $data = mysqli_fetch_assoc($query);
-        $_SESSION['admin'] = $data['username'];
-        header("Location: admin.php");
-        exit;
+    if (mysqli_num_rows($result) === 1) {
+        $data = mysqli_fetch_assoc($result);
+
+        if (password_verify($password, $data['password'])) {
+            $_SESSION['admin'] = $data['username'];
+            header("Location: admin.php");
+            exit;
+        } else {
+            $error = "Username atau password salah.";
+        }
     } else {
         $error = "Username atau password salah.";
     }
@@ -156,6 +165,10 @@ require __DIR__ . '/koneksi.php';
             </div>
             <button type="submit" class="btn-login">Masuk</button>
         </form>
+        <div class="text-center mt-3" style="font-size:13px; color:#888;">
+            Belum punya akun? 
+            <a href="register.php" style="color:#5a9e2f; font-weight:600; text-decoration:none;">Daftar di sini</a>
+        </div>
     </div>
 </body>
 </html>
