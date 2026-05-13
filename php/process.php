@@ -121,6 +121,13 @@ $kode = "SRI-" . strtoupper(substr(str_replace(' ', '', $nama), 0, 3))
       . "-" . date('dmY')
       . "-" . str_pad(rand(1, 999), 3, '0', STR_PAD_LEFT);
 
+require __DIR__ . '/koneksi.php';
+
+$stmt = mysqli_prepare($koneksi, "INSERT INTO pesanan (nama, email, telepon, alamat, kategori_pengguna, paket, catatan, jumlah_unit, total_bayar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+mysqli_stmt_bind_param($stmt, "sssssssii", $nama, $email, $telepon, $alamat, $kategori_pengguna, $paket, $catatan, $jumlah_unit, $total_akhir);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
+
 
 ?>
 
