@@ -49,8 +49,8 @@ $result = mysqli_query($koneksi, "SELECT * FROM pesanan ORDER BY created_at DESC
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                <li class="nav-item"><span class="nav-link" style="font-size:13px; color:#555;">Halo, <strong><?= $_SESSION['admin'] ?></strong></span></li>
-                <li class="nav-item"><a href="logout.php" class="nav-link btn-logout">Logout</a></li>
+                <li class="nav-item d-flex align-items-center" style="font-size:13px; color:#555; pointer-events:none; user-select:none; margin-right:12px;">Halo, <strong style="margin-left:4px;"><?= $_SESSION['admin'] ?></strong></li>
+                <li class="nav-item"><a href="logout.php" class="nav-link btn-logout-nav">Logout</a></li>
             </ul>
         </div>
     </div>
