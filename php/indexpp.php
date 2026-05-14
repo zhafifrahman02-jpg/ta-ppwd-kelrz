@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -26,8 +30,22 @@
                     <li class="nav-item"><a class="nav-link" href="indexpp.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
                     <li class="nav-item"><a class="nav-link" href="#paket">Paket</a></li>
-                    <li class="nav-item"><a class="nav-link active-page" href="formpp.html">Pesan Sekarang</a></li>
+                    <li class="nav-item">
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <a class="nav-link active-page" href="formpp.html">Pesan Sekarang</a>
+                        <?php else: ?>
+                            <a class="nav-link active-page" href="login.php">Login</a>
+                        <?php endif; ?>
+                    </li>
                 </ul>
+                <div class="ms-lg-3 d-flex align-items-center gap-2">
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <span style="font-size:13px; font-weight:600; color:#5a9e2f;">
+                            Halo, <?= htmlspecialchars($_SESSION['user_nama']) ?>
+                        </span>
+                        <a href="logout.php" style="font-size:13px; font-weight:600; color:#888; text-decoration:none;">Keluar</a>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </nav>
@@ -36,13 +54,13 @@
        <div id="carousel" class="carousel slide w-100" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="5000">
-                    <img src="img/verticalfarm.jpg" class="d-block w-100" alt="Vertical Farm">
+                    <img src="../img/verticalfarm.jpg" class="d-block w-100" alt="Vertical Farm">
                 </div>
                 <div class="carousel-item" data-bs-interval="5000">
-                    <img src="img/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg" class="d-block w-100" alt="Hydroponics System">
+                    <img src="../img/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg" class="d-block w-100" alt="Hydroponics System">
                 </div>
                 <div class="carousel-item" data-bs-interval="5000">
-                    <img src="img/fresh-green-lettuce-leaves-close-up.jpg" class="d-block w-100" alt="Fresh Lettuce">
+                    <img src="../img/fresh-green-lettuce-leaves-close-up.jpg" class="d-block w-100" alt="Fresh Lettuce">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
@@ -62,7 +80,11 @@
                     Rak kokoh dan kontroler otomatis memastikan nutrisi, air, dan cahaya presisi
                     24 jam tanpa pengawasan manual.
                 </p>
-                <a href="formpp.html" class="btn-hero">Pesan Sekarang</a>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <a href="formpp.html" class="btn-hero">Pesan Sekarang</a>
+                <?php else: ?>
+                    <a href="login.php" class="btn-hero">Login untuk Memesan</a>
+                <?php endif; ?>
                 
                 <nav class="nav-links">
                 <a class="hero-nav-item" href="#tentang">
@@ -93,7 +115,7 @@
             </div>
             <!-- Kanan: Gambar -->
             <div class="tentang-right">
-                <img src="img/verticalfarm.jpg" alt="Pertanian Hidroponik Smart Rack IoT">
+                <img src="../img/verticalfarm.jpg" alt="Pertanian Hidroponik Smart Rack IoT">
             </div>
         </div>
     </section>
@@ -104,9 +126,9 @@
             <p class="gallery-sub">Lihat hasil nyata dari sistem Smart Rack IoT kami.</p>
         </div>
         <div class="gallery-grid mx-auto" style="max-width:1000px;">
-            <img src="img/verticalfarm.jpg" alt="Vertical Farm">
-            <img src="img/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg" alt="Hydroponics System">
-            <img src="img/fresh-green-lettuce-leaves-close-up.jpg" alt="Fresh Lettuce">
+            <img src="../img/verticalfarm.jpg" alt="Vertical Farm">
+            <img src="../img/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg" alt="Hydroponics System">
+            <img src="../img/fresh-green-lettuce-leaves-close-up.jpg" alt="Fresh Lettuce">
         </div>
     </section>
 
@@ -198,7 +220,11 @@
         <div class="cta-content">
             <h2>Siap Panen Sayur Segar di Rumah?</h2>
             <p>Pilih paket RuangTanam Anda dan mulai panen dalam 30 hari.</p>
-            <a href="formpp.html" class="btn-cta">Pesan Sekarang</a>
+            <?php if (isset($_SESSION['user'])): ?>
+                <a href="formpp.html" class="btn-cta">Pesan Sekarang</a>
+            <?php else: ?>
+                <a href="login.php" class="btn-cta">Login untuk Memesan</a>
+            <?php endif; ?>
         </div>
     </section>
 
