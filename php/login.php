@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .login-logo span {
             font-size: 20px;
             font-weight: 800;
-            color: #222;
+            color: #5a9e2f;
         }
 
         .login-card h4 {

@@ -1,0 +1,223 @@
+:root {
+    --hijau: #5a9e2f;
+    --hijau-dark: #457a24;
+    --hijau-muda: #eaf5df;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+/* Navbar styles to match index page exactly */
+.navbar {
+    background: white;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+}
+
+.navbar-brand {
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--hijau) !important;
+}
+
+.navbar-brand img {
+    width: 40px;
+}
+
+.nav-link {
+    font-weight: 600 !important;
+    font-size: 0.92rem !important;
+    color: #222 !important;
+}
+
+.nav-link:hover {
+    color: var(--hijau) !important;
+}
+
+.nav-link.active-page {
+    background-color: var(--hijau) !important;
+    color: white !important;
+    border-radius: 6px;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+}
+
+.nav-link.active-page:hover {
+    background-color: var(--hijau-dark) !important;
+}
+
+/* Admin specific styles */
+.badge-admin {
+    font-size: 10px;
+    font-weight: 700;
+    background: #eaf5df;
+    color: #457a24;
+    padding: 3px 9px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dashboard-wrap {
+    padding: 36px 0 60px;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.page-sub {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 4px solid #5a9e2f;
+}
+
+.stat-card .label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 6px;
+}
+
+.stat-card .value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111;
+}
+
+.stat-card.belum {
+    border-left-color: #e67e22;
+}
+
+.stat-card.dikonfirmasi {
+    border-left-color: #5a9e2f;
+}
+
+.table-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.table-card-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #222;
+}
+
+.table thead th {
+    background: #f8faf6;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #777;
+    border-bottom: 1px solid #eee;
+    padding: 13px 16px;
+    white-space: nowrap;
+}
+
+.table tbody td {
+    font-size: 13px;
+    color: #333;
+    padding: 13px 16px;
+    vertical-align: middle;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr:hover td {
+    background: #fafff7;
+}
+
+.badge-belum {
+    font-size: 11px;
+    font-weight: 600;
+    background: #fff4e6;
+    color: #d35400;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.badge-konfirmasi {
+    font-size: 11px;
+    font-weight: 600;
+    background: #eaf5df;
+    color: #457a24;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.btn-konfirmasi {
+    font-size: 12px;
+    font-weight: 700;
+    background: #5a9e2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 13px;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+}
+
+.btn-konfirmasi:hover {
+    background: #457a24;
+    color: white;
+}
+
+.btn-hapus {
+    font-size: 12px;
+    font-weight: 700;
+    background: white;
+    color: #c0392b;
+    border: 1px solid #e8b4b0;
+    border-radius: 5px;
+    padding: 5px 13px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.btn-hapus:hover {
+    background: #c0392b;
+    color: white;
+    border-color: #c0392b;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #bbb;
+    font-size: 14px;
+}
+
+.empty-state span {
+    display: block;
+    font-size: 36px;
+    margin-bottom: 10px;
+}

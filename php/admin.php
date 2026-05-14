@@ -31,245 +31,27 @@ $result = mysqli_query($koneksi, "SELECT * FROM pesanan ORDER BY created_at DESC
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard – RuangTanam</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * { font-family: 'Montserrat', sans-serif; }
-
-        body {
-            background: #f4f7f2;
-            min-height: 100vh;
-        }
-
-        .navbar-admin {
-            background: white;
-            border-bottom: 2px solid #eaf5df;
-            padding: 14px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .navbar-brand-admin {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .navbar-brand-admin img {
-            width: 34px;
-        }
-
-        .navbar-brand-admin span {
-            font-size: 18px;
-            font-weight: 800;
-            color: #222;
-        }
-
-        .badge-admin {
-            font-size: 10px;
-            font-weight: 700;
-            background: #eaf5df;
-            color: #457a24;
-            padding: 3px 9px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-logout {
-            font-size: 13px;
-            font-weight: 600;
-            color: #888;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 7px 16px;
-            background: white;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .btn-logout:hover {
-            color: #c0392b;
-            border-color: #c0392b;
-        }
-
-        .dashboard-wrap {
-            padding: 36px 0 60px;
-        }
-
-        .page-title {
-            font-size: 22px;
-            font-weight: 800;
-            color: #111;
-            margin-bottom: 4px;
-        }
-
-        .page-sub {
-            font-size: 13px;
-            color: #888;
-            margin-bottom: 28px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-left: 4px solid #5a9e2f;
-        }
-
-        .stat-card .label {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #999;
-            margin-bottom: 6px;
-        }
-
-        .stat-card .value {
-            font-size: 28px;
-            font-weight: 800;
-            color: #111;
-        }
-
-        .stat-card.belum {
-            border-left-color: #e67e22;
-        }
-
-        .stat-card.dikonfirmasi {
-            border-left-color: #5a9e2f;
-        }
-
-        .table-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            overflow: hidden;
-        }
-
-        .table-card-header {
-            padding: 18px 24px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 14px;
-            font-weight: 700;
-            color: #222;
-        }
-
-        .table thead th {
-            background: #f8faf6;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #777;
-            border-bottom: 1px solid #eee;
-            padding: 13px 16px;
-            white-space: nowrap;
-        }
-
-        .table tbody td {
-            font-size: 13px;
-            color: #333;
-            padding: 13px 16px;
-            vertical-align: middle;
-            border-bottom: 1px solid #f5f5f5;
-        }
-
-        .table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .table tbody tr:hover td {
-            background: #fafff7;
-        }
-
-        .badge-belum {
-            font-size: 11px;
-            font-weight: 600;
-            background: #fff4e6;
-            color: #d35400;
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-
-        .badge-konfirmasi {
-            font-size: 11px;
-            font-weight: 600;
-            background: #eaf5df;
-            color: #457a24;
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-
-        .btn-konfirmasi {
-            font-size: 12px;
-            font-weight: 700;
-            background: #5a9e2f;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 6px 13px;
-            text-decoration: none;
-            transition: background 0.2s;
-            display: inline-block;
-        }
-
-        .btn-konfirmasi:hover {
-            background: #457a24;
-            color: white;
-        }
-
-        .btn-hapus {
-            font-size: 12px;
-            font-weight: 700;
-            background: white;
-            color: #c0392b;
-            border: 1px solid #e8b4b0;
-            border-radius: 5px;
-            padding: 5px 13px;
-            text-decoration: none;
-            transition: all 0.2s;
-            display: inline-block;
-        }
-
-        .btn-hapus:hover {
-            background: #c0392b;
-            color: white;
-            border-color: #c0392b;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #bbb;
-            font-size: 14px;
-        }
-
-        .empty-state span {
-            display: block;
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styleadmin.css">
 </head>
 <body>
 
-<nav class="navbar-admin">
-    <div class="container d-flex align-items-center justify-content-between">
-        <div class="d-flex align-items-center gap-3">
-            <a href="admin.php" class="navbar-brand-admin">
-                <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" alt="Logo">
-                <span>RuangTanam</span>
-            </a>
-            <span class="badge-admin">Admin Panel</span>
-        </div>
-        <div class="d-flex align-items-center gap-3">
-            <span style="font-size:13px; color:#555;">Halo, <strong><?= $_SESSION['admin'] ?></strong></span>
-            <a href="logout.php" class="btn-logout">Logout</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="admin.php">
+            <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" width="40" alt="Logo">
+            <span>RuangTanam</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><span class="nav-link" style="font-size:13px; color:#555;">Halo, <strong><?= $_SESSION['admin'] ?></strong></span></li>
+                <li class="nav-item"><a href="logout.php" class="nav-link btn-logout">Logout</a></li>
+            </ul>
         </div>
     </div>
 </nav>

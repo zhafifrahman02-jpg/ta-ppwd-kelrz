@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin-bottom: 28px;
         }
         .login-logo img { width: 36px; }
-        .login-logo span { font-size: 20px; font-weight: 800; color: #222; }
+        .login-logo span { font-size: 20px; font-weight: 800; color: #5a9e2f; }
         .login-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: #111; }
         .login-card p.sub { font-size: 13px; color: #888; margin-bottom: 24px; }
         label { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 5px; }
