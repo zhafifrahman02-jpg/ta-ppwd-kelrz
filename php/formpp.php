@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,13 +12,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="indexpp.html">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="indexpp.php>
                 <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" width="40" alt="SRI Logo">
                 RuangTanam
             </a>
@@ -23,8 +27,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                    <li class="nav-item"><a class="nav-link" href="indexpp.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active-page" href="formpp.html">Pesan Sekarang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="indexpp.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active-page" href="formpp.php">Pesan Sekarang</a></li>
                 </ul>
             </div>
         </div>
@@ -39,7 +43,7 @@
                             <h2 class="fw-bold mb-1">Pesan <span style="color:#5a9e2f;">RuangTanam</span></h2>
                             <p class="text-muted mb-3" style="font-size:14px;">Isi formulir berikut untuk memesan paket pilihan Anda.</p>
 
-                            <form action="php/process.php" method="POST">
+                            <form action="process.php" method="POST">
 
                                 <p class="form-section-title">Data Pemesan</p>
 

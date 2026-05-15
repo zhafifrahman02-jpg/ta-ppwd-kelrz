@@ -18,7 +18,7 @@ session_start();
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="indexpp.html">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="indexpp.php">
                 <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" width="40" alt="SRI Logo">
                 RuangTanam
             </a>
@@ -27,12 +27,12 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                    <li class="nav-item"><a class="nav-link" href="indexpp.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="indexpp.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
                     <li class="nav-item"><a class="nav-link" href="#paket">Paket</a></li>
                     <li class="nav-item">
                         <?php if (isset($_SESSION['user'])): ?>
-                            <a class="nav-link active-page" href="formpp.html">Pesan Sekarang</a>
+                            <a class="nav-link active-page" href="formpp.php">Pesan Sekarang</a>
                         <?php else: ?>
                             <a class="nav-link active-page" href="login.php">Login</a>
                         <?php endif; ?>
@@ -81,7 +81,7 @@ session_start();
                     24 jam tanpa pengawasan manual.
                 </p>
                 <?php if (isset($_SESSION['user'])): ?>
-                    <a href="formpp.html" class="btn-hero">Pesan Sekarang</a>
+                    <a href="formpp.php" class="btn-hero">Pesan Sekarang</a>
                 <?php else: ?>
                     <a href="login.php" class="btn-hero">Login untuk Memesan</a>
                 <?php endif; ?>
@@ -221,7 +221,7 @@ session_start();
             <h2>Siap Panen Sayur Segar di Rumah?</h2>
             <p>Pilih paket RuangTanam Anda dan mulai panen dalam 30 hari.</p>
             <?php if (isset($_SESSION['user'])): ?>
-                <a href="formpp.html" class="btn-cta">Pesan Sekarang</a>
+                <a href="formpp.php" class="btn-cta">Pesan Sekarang</a>
             <?php else: ?>
                 <a href="login.php" class="btn-cta">Login untuk Memesan</a>
             <?php endif; ?>
