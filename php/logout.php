@@ -1,7 +1,5 @@
 <?php
 session_start();
 session_destroy();
-header("Location: indexpp.php");
+header("Location: login.php");
 exit;
-
-?>

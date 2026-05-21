@@ -1,7 +1,4 @@
-<?php
-session_start();
-?>
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -12,7 +9,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -28,24 +25,8 @@ session_start();
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
                     <li class="nav-item"><a class="nav-link" href="indexpp.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#paket">Paket</a></li>
-                    <li class="nav-item">
-                        <?php if (isset($_SESSION['user'])): ?>
-                            <a class="nav-link active-page" href="formpp.php">Pesan Sekarang</a>
-                        <?php else: ?>
-                            <a class="nav-link active-page" href="login.php">Login</a>
-                        <?php endif; ?>
-                    </li>
+                    <li class="nav-item"><a class="nav-link active-page" href="formpp.php">Pesan Sekarang</a></li>
                 </ul>
-                <div class="ms-lg-3 d-flex align-items-center gap-2">
-                    <?php if (isset($_SESSION['user'])): ?>
-                        <span style="font-size:13px; font-weight:600; style="font-size:13px; font-weight:600; color:var(--hijau);">
-                            Halo, <?= htmlspecialchars($_SESSION['user_nama']) ?>
-                        </span>
-                        <a href="logout.php" style="font-size:13px; font-weight:600; color:#888; text-decoration:none;">Keluar</a>
-                    <?php endif; ?>
-                </div>
             </div>
         </div>
     </nav>
@@ -54,13 +35,13 @@ session_start();
        <div id="carousel" class="carousel slide w-100" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="5000">
-                    <img src="../img/verticalfarm.jpg" class="d-block w-100" alt="Vertical Farm">
+                    <img src="img/verticalfarm.jpg" class="d-block w-100" alt="Vertical Farm">
                 </div>
                 <div class="carousel-item" data-bs-interval="5000">
-                    <img src="../img/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg" class="d-block w-100" alt="Hydroponics System">
+                    <img src="img/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg" class="d-block w-100" alt="Hydroponics System">
                 </div>
                 <div class="carousel-item" data-bs-interval="5000">
-                    <img src="../img/fresh-green-lettuce-leaves-close-up.jpg" class="d-block w-100" alt="Fresh Lettuce">
+                    <img src="img/fresh-green-lettuce-leaves-close-up.jpg" class="d-block w-100" alt="Fresh Lettuce">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
@@ -80,11 +61,7 @@ session_start();
                     Rak kokoh dan kontroler otomatis memastikan nutrisi, air, dan cahaya presisi
                     24 jam tanpa pengawasan manual.
                 </p>
-                <?php if (isset($_SESSION['user'])): ?>
-                    <a href="formpp.php" class="btn-hero">Pesan Sekarang</a>
-                <?php else: ?>
-                    <a href="login.php" class="btn-hero">Login untuk Memesan</a>
-                <?php endif; ?>
+                <a href="formpp.php" class="btn-hero">Pesan Sekarang</a>
                 
                 <nav class="nav-links">
                 <a class="hero-nav-item" href="#tentang">
@@ -116,7 +93,7 @@ session_start();
             </div>
             <!-- Kanan: Gambar -->
             <div class="tentang-right">
-                <img src="../img/verticalfarm.jpg" alt="Pertanian Hidroponik Smart Rack IoT">
+                <img src="img/verticalfarm.jpg" alt="Pertanian Hidroponik Smart Rack IoT">
             </div>
         </div>
     </section>
@@ -128,15 +105,15 @@ session_start();
             <p class="gallery-sub">Lihat hasil nyata dari sistem Smart Rack IoT kami.</p>
         </div>
         <div class="gallery-grid mx-auto" style="max-width:1000px;">
-            <img src="../img/verticalfarm.jpg" alt="Vertical Farm">
-            <img src="../img/hydroponics-system-planting-vegetables-herbs-without-using-soil-health.jpg" alt="Hydroponics System">
-            <img src="../img/fresh-green-lettuce-leaves-close-up.jpg" alt="Fresh Lettuce">
+            <img src="img/basic.png" alt="Vertical Farm">
+            <img src="img/regular.png" alt="Hydroponics System">
+            <img src="img/lengkap.png" alt="Fresh Lettuce">
         </div>
     </section>
 
     <section id="paket" class="paket-section">
         <div class="paket-content">
-            <span class="section-label-tag">Harga &amp; Paket</span>
+            <span class="section-label-tag">Harga & Paket</span>
             <h2>Pilihan Paket <span class="teks-hijau">RuangTanam</span></h2>
             <p class="paket-sub">Tiga pilihan paket sesuai kebutuhan dan skala penggunaan Anda.</p>
             <div class="paket-table-wrap">
@@ -223,11 +200,7 @@ session_start();
         <div class="cta-content">
             <h2>Siap Panen Sayur Segar di Rumah?</h2>
             <p>Pilih paket RuangTanam Anda dan mulai panen dalam 30 hari.</p>
-            <?php if (isset($_SESSION['user'])): ?>
-                <a href="formpp.php" class="btn-cta">Pesan Sekarang</a>
-            <?php else: ?>
-                <a href="login.php" class="btn-cta">Login untuk Memesan</a>
-            <?php endif; ?>
+            <a href="formpp.php" class="btn-cta">Pesan Sekarang</a>
         </div>
     </section>
 

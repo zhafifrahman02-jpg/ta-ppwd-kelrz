@@ -1,7 +1,4 @@
-<?php
-session_start();
-?>
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -12,7 +9,7 @@ session_start();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -41,9 +38,9 @@ session_start();
                     <div class="card shadow border-0 rounded-3">
                         <div class="card-body p-4 p-md-5">
                             <h2 style="font-family:'DM Serif Display',serif; font-weight:400; font-size:2rem; letter-spacing:-0.01em; color:var(--hijau-dark); margin-bottom:6px;">Pesan <span style="color:#40916c; font-style:italic;">RuangTanam</span></h2>
-                            <p class="text-muted mb-3" style="font-size:0.88rem; font-family:'Outfit',sans-serif;">Isi formulir berikut untuk memesan paket pilihan Anda.</p>
+                            <p class="text-muted mb-3" style="font-size:14px;">Isi formulir berikut untuk memesan paket pilihan Anda.</p>
 
-                            <form action="process.php" method="POST">
+                            <form action="php/process.php" method="POST">
 
                                 <p class="form-section-title">Data Pemesan</p>
 
