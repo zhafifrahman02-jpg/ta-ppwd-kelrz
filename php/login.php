@@ -262,8 +262,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Role Tab Switcher -->
         <div class="role-tabs">
-            <button class="role-tab <?= ($tab === 'user') ? 'active' : '' ?>" onclick="switchTab('user')">&#128100; Login User</button>
-            <button class="role-tab <?= ($tab === 'admin') ? 'active' : '' ?>" onclick="switchTab('admin')">&#128737; Login Admin</button>
+            <button class="role-tab <?= ($tab === 'user') ? 'active' : '' ?>" onclick="switchTab('user')">Login User</button>
+            <button class="role-tab <?= ($tab === 'admin') ? 'active' : '' ?>" onclick="switchTab('admin')">Login Admin</button>
         </div>
 
         <?php if ($error): ?>
