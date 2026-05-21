@@ -203,7 +203,7 @@ mysqli_stmt_close($stmt);
                         </p>
 
 
-                        <a href="../indexpp.html" class="btn btn-hijau w-100 mt-4 py-2">Kembali ke Halaman Utama</a>
+                        <a href="../indexpp.php" class="btn btn-hijau w-100 mt-4 py-2">Kembali ke Halaman Utama</a>
 
                     </div>
                 </div>
