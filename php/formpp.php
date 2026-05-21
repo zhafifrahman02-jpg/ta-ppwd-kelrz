@@ -11,14 +11,14 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="indexpp.php>
+            <a class="navbar-brand d-flex align-items-center gap-2" href="indexpp.php">
                 <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" width="40" alt="SRI Logo">
                 RuangTanam
             </a>
@@ -40,8 +40,8 @@ session_start();
                 <div class="col-12 col-md-8 col-lg-6">
                     <div class="card shadow border-0 rounded-3">
                         <div class="card-body p-4 p-md-5">
-                            <h2 class="fw-bold mb-1">Pesan <span style="color:#5a9e2f;">RuangTanam</span></h2>
-                            <p class="text-muted mb-3" style="font-size:14px;">Isi formulir berikut untuk memesan paket pilihan Anda.</p>
+                            <h2 style="font-family:'DM Serif Display',serif; font-weight:400; font-size:2rem; letter-spacing:-0.01em; color:var(--hijau-dark); margin-bottom:6px;">Pesan <span style="color:#40916c; font-style:italic;">RuangTanam</span></h2>
+                            <p class="text-muted mb-3" style="font-size:0.88rem; font-family:'Outfit',sans-serif;">Isi formulir berikut untuk memesan paket pilihan Anda.</p>
 
                             <form action="process.php" method="POST">
 

@@ -5,71 +5,32 @@ if (isset($_SESSION['admin'])) {
     header("Location: admin.php");
     exit;
 }
-if (isset($_SESSION['user'])) {
-    header("Location: indexpp.php");
-    exit;
-}
 
-$error_admin = "";
-$error_user  = "";
-$active_tab  = "user";
+$error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require __DIR__ . '/koneksi.php';
-    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
 
-    // ── LOGIN ADMIN ──
-    if (isset($_POST['login_admin'])) {
-        $active_tab = "admin";
-        $username   = trim($_POST['username_admin']);
-        $password   = trim($_POST['password_admin']);
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-        $stmt = mysqli_prepare($koneksi, "SELECT * FROM admin WHERE username = ?");
-        mysqli_stmt_bind_param($stmt, "s", $username);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+    $stmt = mysqli_prepare($koneksi, "SELECT * FROM admin WHERE username = ?");
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
-        if (mysqli_num_rows($result) === 1) {
-            $data = mysqli_fetch_assoc($result);
-            if (password_verify($password, $data['password'])) {
-                $_SESSION['admin'] = $data['username'];
-                header("Location: admin.php");
-                exit;
-            } else {
-                $error_admin = "Username atau password salah.";
-            }
+    if (mysqli_num_rows($result) === 1) {
+        $data = mysqli_fetch_assoc($result);
+
+        if (password_verify($password, $data['password'])) {
+            $_SESSION['admin'] = $data['username'];
+            header("Location: admin.php");
+            exit;
         } else {
-            $error_admin = "Username atau password salah.";
+            $error = "Username atau password salah.";
         }
-    }
-
-    // ── LOGIN USER ──
-    if (isset($_POST['login_user'])) {
-        $active_tab = "user";
-        $username   = trim($_POST['username_user']);
-        $password   = trim($_POST['password_user']);
-
-        $stmt = mysqli_prepare($koneksi, "SELECT * FROM users WHERE username = ?");
-        mysqli_stmt_bind_param($stmt, "s", $username);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-
-        if (mysqli_num_rows($result) === 1) {
-            $data = mysqli_fetch_assoc($result);
-            if (password_verify($password, $data['password'])) {
-                $_SESSION['user']      = $data['username'];
-                $_SESSION['user_id']   = $data['id'];
-                $_SESSION['user_nama'] = $data['nama_lengkap'];
-                header("Location: indexpp.php");
-                exit;
-            } else {
-                $error_user = "Username atau password salah.";
-            }
-        } else {
-            $error_user = "Username atau password salah.";
-        }
+    } else {
+        $error = "Username atau password salah.";
     }
 }
 ?>
@@ -80,193 +41,207 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin – RuangTanam</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Montserrat', sans-serif; }
+        :root {
+            --hijau:       #2d6a4f;
+            --hijau-dark:  #1b4332;
+            --hijau-light: #74c69d;
+            --hijau-muda:  #d8f3dc;
+            --hijau-pale:  #f0f7f2;
+            --text-main:   #1a2e1e;
+            --text-muted:  #6b7c72;
+            --border:      #d0e4d8;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #f0f4ee;
+            font-family: 'Outfit', sans-serif;
+            background: var(--hijau-dark);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .login-card {
+        /* decorative background circles */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -120px; left: -120px;
+            width: 480px; height: 480px;
+            background: radial-gradient(circle, rgba(116,198,157,0.14) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: -100px; right: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(116,198,157,0.10) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .auth-card {
             background: white;
-            border-radius: 12px;
-            padding: 44px 40px;
+            border-radius: 20px;
+            padding: 48px 44px;
             width: 100%;
             max-width: 420px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+            position: relative;
+            z-index: 1;
         }
 
-        .login-logo {
+        .auth-logo {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
         }
 
-        .login-logo img {
-            width: 36px;
+        .auth-logo img {
+            width: 34px;
+            border-radius: 50%;
         }
 
-        .login-logo span {
-            font-size: 20px;
-            font-weight: 800;
-            color: #5a9e2f;
+        .auth-logo span {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--hijau-dark);
+            letter-spacing: -0.01em;
         }
 
-        .login-card h4 {
-            font-size: 17px;
-            font-weight: 700;
+        .auth-card h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-main);
             margin-bottom: 6px;
-            color: #111;
+            letter-spacing: -0.01em;
         }
 
-        .login-card p.sub {
-            font-size: 13px;
-            color: #888;
-            margin-bottom: 24px;
+        .auth-card p.sub {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            line-height: 1.6;
         }
 
         label {
-            font-size: 13px;
+            font-size: 0.82rem;
             font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            display: block;
         }
 
         .form-control {
-            border-radius: 6px;
-            font-size: 13px;
-            padding: 10px 14px;
-            border: 1px solid #ddd;
+            font-family: 'Outfit', sans-serif;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            padding: 11px 14px;
+            border: 1.5px solid var(--border);
+            color: var(--text-main);
+            background: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
         }
 
         .form-control:focus {
-            border-color: #5a9e2f;
-            box-shadow: 0 0 0 3px rgba(90,158,47,0.12);
+            outline: none;
+            border-color: #40916c;
+            box-shadow: 0 0 0 3px rgba(64,145,108,0.15);
         }
 
-        .btn-login {
-            background: #5a9e2f;
+        .mb-3 { margin-bottom: 18px; }
+
+        .btn-auth {
+            font-family: 'Outfit', sans-serif;
+            background: var(--hijau);
             color: white;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 0.9rem;
             border: none;
-            border-radius: 6px;
-            padding: 11px;
+            border-radius: 100px;
+            padding: 12px;
             width: 100%;
-            margin-top: 8px;
-            transition: background 0.2s;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            letter-spacing: 0.02em;
         }
 
-        .btn-login:hover {
-            background: #457a24;
+        .btn-auth:hover {
+            background: var(--hijau-dark);
+            transform: translateY(-1px);
         }
 
         .alert-error {
-            background: #fff0f0;
-            border: 1px solid #f5c6c6;
-            color: #c0392b;
-            border-radius: 6px;
-            padding: 10px 14px;
-            font-size: 13px;
-            margin-bottom: 16px;
+            background: #fff5f5;
+            border: 1.5px solid #f5c6cb;
+            color: #922b21;
+            border-radius: 8px;
+            padding: 11px 15px;
+            font-size: 0.84rem;
+            margin-bottom: 18px;
+            line-height: 1.5;
         }
 
-        .tab-wrapper {
-            display: flex;
-            background: #f0f4ee;
-            border-radius: 8px;
-            padding: 4px;
-            margin-bottom: 24px;
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
         }
-        .tab-btn {
-            flex: 1; border: none;
-            background: transparent;
-            padding: 9px; border-radius: 6px;
-            font-size: 13px; font-weight: 600;
-            color: #888; cursor: pointer;
-            transition: all 0.2s;
+
+        .auth-footer a {
+            color: var(--hijau);
+            font-weight: 600;
+            text-decoration: none !important;
         }
-        .tab-btn.active {
-            background: white; color: #5a9e2f;
-            box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+
+        .auth-footer a:hover {
+            color: var(--hijau-dark);
         }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
     </style>
 </head>
 <body>
-    <div class="login-card">
-    <div class="login-logo">
-        <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" alt="Logo">
-        <span>RuangTanam</span>
-    </div>
+    <div class="auth-card">
+        <div class="auth-logo">
+            <img src="https://media.istockphoto.com/id/1045368942/vector/abstract-green-leaf-logo-icon-vector-design-ecology-icon-set-eco-icon.jpg?s=612x612&w=0&k=20&c=XIfHMI8r1G73blCpCBFmLIxCtOLx8qX0O3mZC9csRLs=" alt="Logo">
+            <span>RuangTanam</span>
+        </div>
 
-    <!-- Tab Button -->
-    <div class="tab-wrapper">
-        <button class="tab-btn <?= $active_tab === 'user'  ? 'active' : '' ?>" onclick="switchTab('user', event)">Pembeli</button>
-        <button class="tab-btn <?= $active_tab === 'admin' ? 'active' : '' ?>" onclick="switchTab('admin', event)">Admin</button>
-    </div>
+        <h4>Login Admin</h4>
+        <p class="sub">Halaman ini hanya untuk administrator.</p>
 
-    <!-- Tab Pembeli -->
-    <div class="tab-content <?= $active_tab === 'user' ? 'active' : '' ?>" id="tab-user">
-        <?php if ($error_user): ?>
-            <div class="alert-error"><?= htmlspecialchars($error_user) ?></div>
-        <?php endif; ?>
-        <?php if (isset($_GET['registered'])): ?>
-            <div class="alert-success">Akun berhasil dibuat! Silakan login.</div>
+        <?php if ($error): ?>
+            <div class="alert-error"><?= $error ?></div>
         <?php endif; ?>
 
         <form method="POST">
             <div class="mb-3">
                 <label>Username</label>
-                <input type="text" name="username_user" class="form-control" placeholder="Masukkan username" required>
+                <input type="text" name="username" class="form-control" placeholder="Masukkan username" required>
             </div>
             <div class="mb-3">
                 <label>Password</label>
-                <input type="password" name="password_user" class="form-control" placeholder="Masukkan password" required>
+                <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
             </div>
-            <button type="submit" name="login_user" class="btn-login">Masuk</button>
+            <button type="submit" class="btn-auth">Masuk</button>
         </form>
 
-        <div class="text-center mt-3" style="font-size:13px; color:#888;">
+        <div class="auth-footer">
             Belum punya akun?
-            <a href="register.php" style="color:#5a9e2f; font-weight:600; text-decoration:none;">Daftar di sini</a>
+            <a href="register.php">Daftar di sini</a>
         </div>
     </div>
-
-    <!-- Tab: Admin -->
-    <div class="tab-content <?= $active_tab === 'admin' ? 'active' : '' ?>" id="tab-admin">
-        <?php if ($error_admin): ?>
-            <div class="alert-error"><?= htmlspecialchars($error_admin) ?></div>
-        <?php endif; ?>
-
-        <form method="POST">
-            <div class="mb-3">
-                <label>Username</label>
-                <input type="text" name="username_admin" class="form-control" placeholder="Masukkan username" required>
-            </div>
-            <div class="mb-3">
-                <label>Password</label>
-                <input type="password" name="password_admin" class="form-control" placeholder="Masukkan password" required>
-            </div>
-            <button type="submit" name="login_admin" class="btn-login">Masuk sebagai Admin</button>
-        </form>
-    </div>
-</div>
-
-<script>
-    function switchTab(tab, event) {
-        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        document.getElementById('tab-' + tab).classList.add('active');
-    }
-</script>
 </body>
 </html>

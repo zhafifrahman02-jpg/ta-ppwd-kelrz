@@ -1,149 +1,218 @@
+/* ===================================================
+   RuangTanam – Admin Dashboard Style
+   =================================================== */
+
 :root {
-    --hijau: #5a9e2f;
-    --hijau-dark: #457a24;
-    --hijau-muda: #eaf5df;
+    --hijau:        #2d6a4f;
+    --hijau-dark:   #1b4332;
+    --hijau-mid:    #40916c;
+    --hijau-light:  #74c69d;
+    --hijau-muda:   #d8f3dc;
+    --hijau-pale:   #f0f7f2;
+    --soil:         #3d2b1f;
+    --white:        #ffffff;
+    --text-main:    #1a2e1e;
+    --text-muted:   #6b7c72;
+    --border:       #d0e4d8;
+    --font-display: 'DM Serif Display', serif;
+    --font-body:    'Outfit', sans-serif;
 }
 
-* {
-    font-family: 'Montserrat', sans-serif;
+*, *::before, *::after {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    outline: none;
 }
+
+a, a:hover, a:focus { text-decoration: none !important; }
 
 body {
-    background-color: #f5f5f5;
+    font-family: var(--font-body);
+    background: var(--hijau-pale);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Navbar styles to match index page exactly */
+/* ─── Navbar ─── */
 .navbar {
-    background: white;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.97) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: none;
+}
+
+.navbar .container {
+    padding-top: 14px;
+    padding-bottom: 14px;
 }
 
 .navbar-brand {
-    font-weight: 900;
-    font-size: 1.3rem;
-    color: var(--hijau) !important;
+    font-family: var(--font-display) !important;
+    font-size: 1.4rem !important;
+    font-weight: 400 !important;
+    color: var(--hijau-dark) !important;
+    letter-spacing: -0.01em;
 }
 
 .navbar-brand img {
-    width: 40px;
+    border-radius: 50%;
+    width: 34px !important;
 }
 
 .nav-link {
+    font-family: var(--font-body) !important;
+    font-weight: 500 !important;
+    font-size: 0.88rem !important;
+    color: var(--text-muted) !important;
+    padding: 6px 12px !important;
+    transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--hijau-dark) !important; }
+
+/* Admin user greeting */
+.admin-greeting {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+    margin-right: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.admin-greeting strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* Logout button */
+.btn-logout-nav {
+    font-family: var(--font-body) !important;
+    font-size: 0.84rem !important;
     font-weight: 600 !important;
-    font-size: 0.92rem !important;
-    color: #222 !important;
-}
-
-.nav-link:hover {
-    color: var(--hijau) !important;
-}
-
-.nav-link.active-page {
-    background-color: var(--hijau) !important;
+    background: var(--hijau) !important;
     color: white !important;
-    border-radius: 6px;
-    padding-left: 14px !important;
-    padding-right: 14px !important;
+    border-radius: 100px;
+    padding: 7px 18px !important;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
 }
 
-.nav-link.active-page:hover {
-    background-color: var(--hijau-dark) !important;
+.btn-logout-nav:hover {
+    background: var(--hijau-dark) !important;
+    color: white !important;
+    transform: translateY(-1px);
 }
 
-/* Admin specific styles */
-.badge-admin {
-    font-size: 10px;
-    font-weight: 700;
-    background: #eaf5df;
-    color: #457a24;
-    padding: 3px 9px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
+/* ─── Dashboard Wrap ─── */
 .dashboard-wrap {
-    padding: 36px 0 60px;
+    padding: 40px 0 70px;
 }
 
 .page-title {
-    font-size: 22px;
-    font-weight: 800;
-    color: #111;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--hijau-dark);
     margin-bottom: 4px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
 }
 
 .page-sub {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 28px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.6;
 }
 
+/* ─── Stat Cards ─── */
 .stat-card {
     background: white;
-    border-radius: 10px;
-    padding: 20px 24px;
-    margin-bottom: 24px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    border-left: 4px solid #5a9e2f;
+    border-radius: 14px;
+    padding: 22px 26px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--hijau-light);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45,106,79,0.10);
 }
 
 .stat-card .label {
-    font-size: 11px;
+    font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #999;
-    margin-bottom: 6px;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
 }
 
 .stat-card .value {
-    font-size: 28px;
-    font-weight: 800;
-    color: #111;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--hijau-dark);
+    line-height: 1;
 }
 
 .stat-card.belum {
-    border-left-color: #e67e22;
+    border-left-color: #e8a145;
+}
+
+.stat-card.belum .value {
+    color: #c47a1a;
 }
 
 .stat-card.dikonfirmasi {
-    border-left-color: #5a9e2f;
+    border-left-color: var(--hijau-light);
 }
 
+/* ─── Table Card ─── */
 .table-card {
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     overflow: hidden;
 }
 
 .table-card-header {
-    padding: 18px 24px;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 14px;
+    padding: 20px 26px;
+    border-bottom: 1px solid var(--hijau-muda);
+    font-size: 0.8rem;
     font-weight: 700;
-    color: #222;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    color: var(--text-muted);
+}
+
+.table {
+    margin-bottom: 0;
 }
 
 .table thead th {
-    background: #f8faf6;
-    font-size: 11px;
+    background: var(--hijau-pale);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #777;
-    border-bottom: 1px solid #eee;
-    padding: 13px 16px;
+    letter-spacing: 0.10em;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 18px;
     white-space: nowrap;
 }
 
 .table tbody td {
-    font-size: 13px;
-    color: #333;
-    padding: 13px 16px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--text-main);
+    padding: 14px 18px;
     vertical-align: middle;
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid var(--hijau-muda);
 }
 
 .table tbody tr:last-child td {
@@ -151,73 +220,96 @@ body {
 }
 
 .table tbody tr:hover td {
-    background: #fafff7;
+    background: rgba(116,198,157,0.05);
 }
 
+/* ─── Badges ─── */
 .badge-belum {
-    font-size: 11px;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
     font-weight: 600;
-    background: #fff4e6;
-    color: #d35400;
-    padding: 4px 10px;
-    border-radius: 20px;
+    background: #fef3e2;
+    color: #b45309;
+    padding: 4px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 .badge-konfirmasi {
-    font-size: 11px;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
     font-weight: 600;
-    background: #eaf5df;
-    color: #457a24;
-    padding: 4px 10px;
-    border-radius: 20px;
+    background: var(--hijau-muda);
+    color: var(--hijau-dark);
+    padding: 4px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    display: inline-block;
 }
 
+/* ─── Action Buttons ─── */
 .btn-konfirmasi {
-    font-size: 12px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
     font-weight: 700;
-    background: #5a9e2f;
+    background: var(--hijau);
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 6px 13px;
+    border-radius: 100px;
+    padding: 6px 14px;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.15s;
     display: inline-block;
+    white-space: nowrap;
 }
 
 .btn-konfirmasi:hover {
-    background: #457a24;
+    background: var(--hijau-dark);
     color: white;
+    transform: translateY(-1px);
 }
 
 .btn-hapus {
-    font-size: 12px;
-    font-weight: 700;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
     background: white;
-    color: #c0392b;
-    border: 1px solid #e8b4b0;
-    border-radius: 5px;
-    padding: 5px 13px;
+    color: #b91c1c;
+    border: 1.5px solid #fca5a5;
+    border-radius: 100px;
+    padding: 5px 14px;
     text-decoration: none;
     transition: all 0.2s;
     display: inline-block;
+    white-space: nowrap;
 }
 
 .btn-hapus:hover {
-    background: #c0392b;
+    background: #b91c1c;
     color: white;
-    border-color: #c0392b;
+    border-color: #b91c1c;
+    transform: translateY(-1px);
 }
 
+/* ─── Empty State ─── */
 .empty-state {
     text-align: center;
-    padding: 60px 20px;
-    color: #bbb;
-    font-size: 14px;
+    padding: 64px 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
 .empty-state span {
     display: block;
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+    .page-title { font-size: 1.6rem; }
+    .stat-card { padding: 18px 20px; }
+    .stat-card .value { font-size: 1.8rem; }
 }

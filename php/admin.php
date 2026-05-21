@@ -33,7 +33,7 @@ $result = mysqli_query($koneksi, "SELECT * FROM pesanan ORDER BY created_at DESC
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styleadmin.css">
 </head>
 <body>
@@ -49,8 +49,8 @@ $result = mysqli_query($koneksi, "SELECT * FROM pesanan ORDER BY created_at DESC
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                <li class="nav-item"><span class="nav-link" style="font-size:13px; color:#555;">Halo, <strong><?= $_SESSION['admin'] ?></strong></span></li>
-                <li class="nav-item"><a href="logout.php" class="nav-link btn-logout">Logout</a></li>
+                <li class="nav-item d-flex align-items-center admin-greeting" style="pointer-events:none; user-select:none; margin-right:8px;">Halo,&nbsp;<strong><?= htmlspecialchars($_SESSION['admin']) ?></strong></li>
+                <li class="nav-item"><a href="logout.php" class="nav-link btn-logout-nav">Logout</a></li>
             </ul>
         </div>
     </div>

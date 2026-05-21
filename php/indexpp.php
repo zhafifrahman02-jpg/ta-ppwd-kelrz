@@ -11,7 +11,7 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -40,7 +40,7 @@ session_start();
                 </ul>
                 <div class="ms-lg-3 d-flex align-items-center gap-2">
                     <?php if (isset($_SESSION['user'])): ?>
-                        <span style="font-size:13px; font-weight:600; color:#5a9e2f;">
+                        <span style="font-size:13px; font-weight:600; style="font-size:13px; font-weight:600; color:var(--hijau);">
                             Halo, <?= htmlspecialchars($_SESSION['user_nama']) ?>
                         </span>
                         <a href="logout.php" style="font-size:13px; font-weight:600; color:#888; text-decoration:none;">Keluar</a>
@@ -107,6 +107,7 @@ session_start();
         <div class="tentang-split">
             <!-- Kiri: Teks -->
             <div class="tentang-left">
+                <span class="section-label-tag">Tentang Kami</span>
                 <h2>Tentang <span class="teks-hijau">RuangTanam</span></h2>
                 <p>RuangTanam adalah sistem pertanian vertikal hidroponik yang dirancang khusus untuk ekosistem perkotaan. Kami adalah perusahaan teknologi pertanian urban yang merancang sistem hidroponik dalam ruangan (<em>indoor hydroponic</em>) yang cerdas, estetik, dan mudah digunakan oleh siapa saja.</p>
                 <p>Dari anak kos hingga pemilik restoran, dari pemula hingga sekolah yang ingin menghadirkan lab pertanian modern — RuangTanam hadir sebagai solusinya.</p>
@@ -122,6 +123,7 @@ session_start();
 
     <section id="gallery" class="gallery-section">
         <div class="paket-content text-center">
+            <span class="section-label-tag">Galeri</span>
             <h2>Gallery <span class="teks-hijau">RuangTanam</span></h2>
             <p class="gallery-sub">Lihat hasil nyata dari sistem Smart Rack IoT kami.</p>
         </div>
@@ -134,6 +136,7 @@ session_start();
 
     <section id="paket" class="paket-section">
         <div class="paket-content">
+            <span class="section-label-tag">Harga &amp; Paket</span>
             <h2>Pilihan Paket <span class="teks-hijau">RuangTanam</span></h2>
             <p class="paket-sub">Tiga pilihan paket sesuai kebutuhan dan skala penggunaan Anda.</p>
             <div class="paket-table-wrap">
