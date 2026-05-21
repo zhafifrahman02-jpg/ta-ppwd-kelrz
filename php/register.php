@@ -111,7 +111,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             justify-content: center;
             padding: 40px 16px;
             position: relative;
-            overflow: hidden;
         }
         body::before {
             content: '';
@@ -296,8 +295,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Role Tab Switcher -->
         <div class="role-tabs">
-            <button class="role-tab <?= ($tab === 'user') ? 'active' : '' ?>" onclick="switchTab('user')">&#128100; Daftar User</button>
-            <button class="role-tab <?= ($tab === 'admin') ? 'active' : '' ?>" onclick="switchTab('admin')">&#128737; Daftar Admin</button>
+            <button class="role-tab <?= ($tab === 'user') ? 'active' : '' ?>" onclick="switchTab('user')">Daftar User</button>
+            <button class="role-tab <?= ($tab === 'admin') ? 'active' : '' ?>" onclick="switchTab('admin')">Daftar Admin</button>
         </div>
 
         <?php if ($error): ?>
