@@ -25,7 +25,20 @@
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
                     <li class="nav-item"><a class="nav-link" href="indexpp.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active-page" href="formpp.php">Pesan Sekarang</a></li>
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <li class="nav-item"><a class="nav-link active-page" href="formpp.php">Pesan Sekarang</a></li>
+                        <li class="nav-item">
+                            <span class="nav-link text-muted" style="font-size:0.85rem;">Halo, <strong><?= htmlspecialchars($_SESSION['user']) ?></strong></span>
+                        </li>
+                        <li class="nav-item"><a class="nav-link text-danger" href="php/logout.php">Keluar</a></li>
+                    <?php elseif (isset($_SESSION['admin'])): ?>
+                        <li class="nav-item"><a class="nav-link active-page" href="formpp.php">Pesan Sekarang</a></li>
+                        <li class="nav-item"><a class="nav-link" href="php/admin.php">Dashboard Admin</a></li>
+                        <li class="nav-item"><a class="nav-link text-danger" href="php/logout.php">Keluar</a></li>
+                    <?php else: ?>
+                        <li class="nav-item"><a class="nav-link active-page" href="php/login.php">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="php/register.php">Daftar</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -61,7 +74,11 @@
                     Rak kokoh dan kontroler otomatis memastikan nutrisi, air, dan cahaya presisi
                     24 jam tanpa pengawasan manual.
                 </p>
-                <a href="formpp.php" class="btn-hero">Pesan Sekarang</a>
+                <?php if (isset($_SESSION['user']) || isset($_SESSION['admin'])): ?>
+                    <a href="formpp.php" class="btn-hero">Pesan Sekarang</a>
+                <?php else: ?>
+                    <a href="php/login.php" class="btn-hero btn-hero-login">Login untuk Memesan</a>
+                <?php endif; ?>
                 
                 <nav class="nav-links">
                 <a class="hero-nav-item" href="#tentang">
@@ -82,7 +99,6 @@
 
     <section id="tentang" class="tentang-section">
         <div class="tentang-split">
-            <!-- Kiri: Teks -->
             <div class="tentang-left">
                 <span class="section-label-tag">Tentang Kami</span>
                 <h2>Tentang <span class="teks-hijau">RuangTanam</span></h2>
@@ -91,7 +107,6 @@
                 <p>Setiap produk kami dirancang dengan filosofi yang sama: teknologi yang menyederhanakan, bukan memperumit. Dengan sistem otomasi penyiraman, pencahayaan LED full spectrum, hingga pemantauan IoT langsung dari genggaman tangan Anda — merawat kebun kini semudah mengisi daya ponsel.</p>
                 <p>Kami percaya bahwa masa depan pangan dimulai dari rumah. Dan rumah itu bisa dimulai dari sudut ruang tamu Anda.</p>
             </div>
-            <!-- Kanan: Gambar -->
             <div class="tentang-right">
                 <img src="img/verticalfarm.jpg" alt="Pertanian Hidroponik Smart Rack IoT">
             </div>
@@ -133,63 +148,15 @@
                             <td class="col-featured">Rp 3.200.000</td>
                             <td>Rp 5.500.000</td>
                         </tr>
-                        <tr>
-                            <td>Material Rak</td>
-                            <td>PVC High Quality</td>
-                            <td class="col-featured">Aluminium / PVC Premium</td>
-                            <td>Aluminium Industrial Grade</td>
-                        </tr>
-                        <tr>
-                            <td>Lubang Tanam</td>
-                            <td>27–30 lubang</td>
-                            <td class="col-featured">27–30 lubang</td>
-                            <td>27–30 lubang + Roda Pengunci</td>
-                        </tr>
-                        <tr>
-                            <td>Otomasi</td>
-                            <td>Timer Digital (lampu & pompa)</td>
-                            <td class="col-featured">IoT Controller + Layar Sentuh</td>
-                            <td>Full Smart System via WiFi</td>
-                        </tr>
-                        <tr>
-                            <td>Sensor</td>
-                            <td>—</td>
-                            <td class="col-featured">Suhu & Kelembapan</td>
-                            <td>Suhu, Kelembapan + Water Level</td>
-                        </tr>
-                        <tr>
-                            <td>Monitoring Jarak Jauh</td>
-                            <td>Tidak</td>
-                            <td class="col-featured">Tidak (via layar unit)</td>
-                            <td>Ya — Dashboard Web / App</td>
-                        </tr>
-                        <tr>
-                            <td>Pencahayaan LED</td>
-                            <td>White-Blue Spectrum</td>
-                            <td class="col-featured">Full Spectrum Pink-Purple</td>
-                            <td>High-Intensity (Adjustable)</td>
-                        </tr>
-                        <tr>
-                            <td>Bonus</td>
-                            <td>Nutrisi AB Mix + 2 Benih</td>
-                            <td class="col-featured">Rockwool + Nutrisi 500ml + 3 Benih Premium</td>
-                            <td>Starter Kit Lengkap</td>
-                        </tr>
-                        <tr>
-                            <td>Ekstra</td>
-                            <td>—</td>
-                            <td class="col-featured">—</td>
-                            <td>Training Online 1 Jam + E-Book Panduan</td>
-                        </tr>
-                        <tr>
-                            <td>Cocok Untuk</td>
-                            <td>Pemula / Hobiis</td>
-                            <td class="col-featured">Hunian Modern / Apartemen</td>
-                            <td>Sekolah / Kantor / Pro</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
+                        <tr><td>Material Rak</td><td>PVC High Quality</td><td class="col-featured">Aluminium / PVC Premium</td><td>Aluminium Industrial Grade</td></tr>
+                        <tr><td>Lubang Tanam</td><td>27–30 lubang</td><td class="col-featured">27–30 lubang</td><td>27–30 lubang + Roda Pengunci</td></tr>
+                        <tr><td>Otomasi</td><td>Timer Digital (lampu & pompa)</td><td class="col-featured">IoT Controller + Layar Sentuh</td><td>Full Smart System via WiFi</td></tr>
+                        <tr><td>Sensor</td><td>—</td><td class="col-featured">Suhu & Kelembapan</td><td>Suhu, Kelembapan + Water Level</td></tr>
+                        <tr><td>Monitoring Jarak Jauh</td><td>Tidak</td><td class="col-featured">Tidak (via layar unit)</td><td>Ya — Dashboard Web / App</td></tr>
+                        <tr><td>Pencahayaan LED</td><td>White-Blue Spectrum</td><td class="col-featured">Full Spectrum Pink-Purple</td><td>High-Intensity (Adjustable)</td></tr>
+                        <tr><td>Bonus</td><td>Nutrisi AB Mix + 2 Benih</td><td class="col-featured">Rockwool + Nutrisi 500ml + 3 Benih Premium</td><td>Starter Kit Lengkap</td></tr>
+                        <tr><td>Ekstra</td><td>—</td><td class="col-featured">—</td><td>Training Online 1 Jam + E-Book Panduan</td></tr>
+                        <tr><td>Cocok Untuk</td><td>Pemula / Hobiis</td><td class="col-featured">Hunian Modern / Apartemen</td><td>Sekolah / Kantor / Pro</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -200,7 +167,11 @@
         <div class="cta-content">
             <h2>Siap Panen Sayur Segar di Rumah?</h2>
             <p>Pilih paket RuangTanam Anda dan mulai panen dalam 30 hari.</p>
-            <a href="formpp.php" class="btn-cta">Pesan Sekarang</a>
+            <?php if (isset($_SESSION['user']) || isset($_SESSION['admin'])): ?>
+                <a href="formpp.php" class="btn-cta">Pesan Sekarang</a>
+            <?php else: ?>
+                <a href="php/login.php" class="btn-cta">Login untuk Memesan</a>
+            <?php endif; ?>
         </div>
     </section>
 
