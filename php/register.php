@@ -64,14 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $error = "Username atau email sudah terdaftar.";
                     $tab = 'user';
                 } else {
-                    $hashed = password_hash($password, PASSWORD_BCRYPT);
-                    $stmt = mysqli_prepare($koneksi, "INSERT INTO users (nama_lengkap, email, no_hp, alamat, username, password) VALUES (?, ?, ?, ?, ?, ?)");
-                    mysqli_stmt_bind_param($stmt, "ssssss", $nama_lengkap, $email, $no_hp, $alamat, $username, $hashed);
-                    if (mysqli_stmt_execute($stmt)) {
-                        $success = "Akun berhasil dibuat! Silakan login.";
-                        $tab = 'user';
-                    } else {
-                        $error = "Gagal membuat akun. Coba lagi.";
+                $hashed = password_hash($password, PASSWORD_BCRYPT);
+                $stmt = mysqli_prepare($koneksi, "INSERT INTO users (nama, email, no_hp, username, password) VALUES (?, ?, ?, ?, ?)");
+                mysqli_stmt_bind_param($stmt, "sssss", $nama_lengkap, $email, $no_hp, $username, $hashed);
+                if (mysqli_stmt_execute($stmt)) {
+                $success = "Akun berhasil dibuat! Silakan login.";
+                $tab = 'user';
+                } else {
+                    $error = "Gagal membuat akun. Coba lagi.";
                         $tab = 'user';
                     }
                 }
