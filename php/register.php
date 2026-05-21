@@ -102,6 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --border:      #d0e4d8;
         }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { overflow-x: hidden; }
         body {
             font-family: 'Outfit', sans-serif;
             background: var(--hijau-dark);
@@ -114,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: -120px; left: -120px;
             width: 480px; height: 480px;
             background: radial-gradient(circle, rgba(116,198,157,0.14) 0%, transparent 70%);
@@ -122,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         body::after {
             content: '';
-            position: absolute;
+            position: fixed;
             bottom: -100px; right: -100px;
             width: 400px; height: 400px;
             background: radial-gradient(circle, rgba(116,198,157,0.10) 0%, transparent 70%);
